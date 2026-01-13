@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+import { IconHistory } from "@tabler/icons-react"
 import { EntryForm } from "@/components/EntryForm"
 
 export function HomePage({ onSubmit }: Props) {
@@ -8,6 +10,15 @@ export function HomePage({ onSubmit }: Props) {
           Dream journal
         </h1>
         <EntryForm onSubmit={onSubmit} />
+        <div className="mt-8 flex justify-center">
+          <Link
+            to="/history"
+            className="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm transition-colors"
+          >
+            <IconHistory className="size-4" />
+            History
+          </Link>
+        </div>
       </div>
     </div>
   )

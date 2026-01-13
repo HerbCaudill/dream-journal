@@ -14,7 +14,6 @@
 - [ ] Create `src/lib/api.ts` for worker API client
 - [ ] Create `src/lib/drive.ts` wrapper for Drive operations
 - [ ] Integrate Google Drive Picker library
-- [ ] Add navigation button to history on `HomePage`
 - [ ] Create `HistoryEntry` component in `src/components/HistoryEntry.tsx`
 - [ ] Implement inline editing in `HistoryEntry`
 - [ ] Implement double-click delete confirmation in `HistoryEntry`
@@ -67,3 +66,4 @@
 - [x] Implement `addEntry` in `useEntries`
 - [x] Implement `updateEntry` in `useEntries`
 - [x] Implement `deleteEntry` in `useEntries`
+- [x] Add navigation button to history on `HomePage`

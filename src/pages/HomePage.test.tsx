@@ -5,6 +5,7 @@
 import "@testing-library/jest-dom/vitest"
 import { render, screen, fireEvent, cleanup } from "@testing-library/react"
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest"
+import { MemoryRouter } from "react-router-dom"
 import { HomePage } from "./HomePage"
 import * as entries from "@/lib/entries"
 
@@ -19,13 +20,21 @@ describe("HomePage", () => {
   })
 
   it("renders the heading", () => {
-    render(<HomePage onSubmit={() => {}} />)
+    render(
+      <MemoryRouter>
+        <HomePage onSubmit={() => {}} />
+      </MemoryRouter>,
+    )
 
     expect(screen.getByRole("heading", { name: "Dream journal" })).toBeInTheDocument()
   })
 
   it("renders the entry form", () => {
-    render(<HomePage onSubmit={() => {}} />)
+    render(
+      <MemoryRouter>
+        <HomePage onSubmit={() => {}} />
+      </MemoryRouter>,
+    )
 
     expect(screen.getByLabelText("Date")).toBeInTheDocument()
     expect(screen.getByLabelText("What did you dream?")).toBeInTheDocument()
@@ -34,7 +43,11 @@ describe("HomePage", () => {
 
   it("passes onSubmit to EntryForm", () => {
     const handleSubmit = vi.fn()
-    render(<HomePage onSubmit={handleSubmit} />)
+    render(
+      <MemoryRouter>
+        <HomePage onSubmit={handleSubmit} />
+      </MemoryRouter>,
+    )
 
     const textarea = screen.getByLabelText("What did you dream?")
     fireEvent.change(textarea, { target: { value: "Flying dream" } })
@@ -46,5 +59,17 @@ describe("HomePage", () => {
       date: "2024-03-15",
       content: "Flying dream",
     })
+  })
+
+  it("renders a link to history page", () => {
+    render(
+      <MemoryRouter>
+        <HomePage onSubmit={() => {}} />
+      </MemoryRouter>,
+    )
+
+    const historyLink = screen.getByRole("link", { name: /history/i })
+    expect(historyLink).toBeInTheDocument()
+    expect(historyLink).toHaveAttribute("href", "/history")
   })
 })

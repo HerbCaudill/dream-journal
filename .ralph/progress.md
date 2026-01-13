@@ -167,10 +167,26 @@ Created `src/hooks/useEntries.ts` - a React hook for managing dream journal entr
   - `getEntryById(id)`: Returns an entry by ID (undefined if not found)
 
 Key features:
+
 - Entries are always sorted by date descending (newest first)
 - Each mutation (add/update/delete) records a pending change for future sync
 - Optimistic updates - state is updated immediately, then persisted to IndexedDB
 - Uses `crypto.randomUUID()` for unique IDs
 
 Also:
+
 - Created `src/hooks/useEntries.test.ts` with 19 comprehensive tests covering all operations
+
+## 2026-01-13: Added navigation button to history on HomePage
+
+Added a "History" link to `src/pages/HomePage.tsx`:
+
+- Uses `react-router-dom` Link component to navigate to `/history`
+- Includes IconHistory from `@tabler/icons-react`
+- Styled with muted color that transitions on hover
+- Positioned below the EntryForm
+
+Also:
+
+- Added `@tabler/icons-react` dependency
+- Updated `src/pages/HomePage.test.tsx` with MemoryRouter wrappers and a new test for the history link
