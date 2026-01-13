@@ -83,3 +83,19 @@ Added three functions to `src/lib/indexedDb.ts`:
 These helpers enable offline-first functionality by tracking changes made while disconnected, so they can be synced to Google Drive when connectivity is restored.
 
 Added 8 new unit tests in `src/lib/indexedDb.test.ts` (total now 27 tests).
+
+## 2026-01-13: Created useOfflineCache hook
+
+Created `src/hooks/useOfflineCache.ts` - a React hook that provides an interface to the IndexedDB offline cache:
+
+- **State**: `entries`, `pendingChanges`, `isLoading`, `error`, `hasPendingChanges`
+- **Methods**:
+  - `saveEntries(entries)`: Save entries to IndexedDB and update state
+  - `addPendingChange(change)`: Add a pending change for offline sync
+  - `clearPendingChanges()`: Clear all pending changes after successful sync
+
+The hook loads entries and pending changes from IndexedDB on mount, providing loading state while the async operation completes.
+
+Also:
+- Added `@testing-library/react` and `jsdom` dev dependencies for hook testing
+- Created `src/hooks/useOfflineCache.test.ts` with 10 comprehensive tests
