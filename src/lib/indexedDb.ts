@@ -1,3 +1,5 @@
+import type { DreamEntry } from "../types"
+
 export const DB_NAME = "dream-journal"
 export const DB_VERSION = 1
 export const ENTRIES_STORE = "entries"
@@ -41,4 +43,53 @@ export const resetDatabase = (): void => {
     dbInstance.close()
     dbInstance = null
   }
+}
+
+export const saveEntries = async (entries: DreamEntry[]): Promise<void> => {
+  const db = await openDatabase()
+
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(ENTRIES_STORE, "readwrite")
+    const store = tx.objectStore(ENTRIES_STORE)
+
+    // Clear existing entries first
+    const clearRequest = store.clear()
+
+    clearRequest.onerror = () => {
+      reject(clearRequest.error)
+    }
+
+    clearRequest.onsuccess = () => {
+      // Add all new entries
+      for (const entry of entries) {
+        store.put(entry)
+      }
+    }
+
+    tx.oncomplete = () => {
+      resolve()
+    }
+
+    tx.onerror = () => {
+      reject(tx.error)
+    }
+  })
+}
+
+export const loadEntries = async (): Promise<DreamEntry[]> => {
+  const db = await openDatabase()
+
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(ENTRIES_STORE, "readonly")
+    const store = tx.objectStore(ENTRIES_STORE)
+    const request = store.getAll()
+
+    request.onsuccess = () => {
+      resolve(request.result)
+    }
+
+    request.onerror = () => {
+      reject(request.error)
+    }
+  })
 }

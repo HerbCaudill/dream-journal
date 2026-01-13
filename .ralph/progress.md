@@ -44,11 +44,22 @@ Created `src/lib/indexedDb.ts` with:
 - Constants: `DB_NAME`, `DB_VERSION`, `ENTRIES_STORE`, `PENDING_STORE`.
 
 The database has two object stores:
+
 - `entries`: For caching dream entries locally (keyPath: "id")
 - `pending`: For tracking changes made while offline (keyPath: "id")
 
 Also:
+
 - Added `fake-indexeddb` dev dependency for testing IndexedDB in Node
 - Created `vitest.config.ts` with test setup file
 - Created `src/test/setup.ts` to initialize fake-indexeddb
 - Added comprehensive unit tests in `src/lib/indexedDb.test.ts`
+
+## 2026-01-13: Added saveEntries and loadEntries IndexedDB helpers
+
+Added two functions to `src/lib/indexedDb.ts`:
+
+- `saveEntries(entries)`: Saves an array of `DreamEntry` to the `entries` object store. Clears existing entries first (full replacement).
+- `loadEntries()`: Loads all entries from the `entries` object store. Returns empty array if none exist.
+
+Added unit tests for both functions in `src/lib/indexedDb.test.ts` (4 new tests).
