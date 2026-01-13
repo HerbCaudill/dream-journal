@@ -63,3 +63,23 @@ Added two functions to `src/lib/indexedDb.ts`:
 - `loadEntries()`: Loads all entries from the `entries` object store. Returns empty array if none exist.
 
 Added unit tests for both functions in `src/lib/indexedDb.test.ts` (4 new tests).
+
+## 2026-01-13: Added pending changes IndexedDB helpers
+
+Added `PendingChange` type to `src/types/index.ts`:
+
+- `id`: string - unique identifier for the pending change
+- `type`: "add" | "update" | "delete" - the type of change
+- `entryId`: string - the ID of the affected entry
+- `entry?`: DreamEntry - the entry data (optional, not needed for deletes)
+- `timestamp`: number - when the change was made (for ordering)
+
+Added three functions to `src/lib/indexedDb.ts`:
+
+- `savePendingChange(change)`: Saves a pending change to the `pending` object store.
+- `loadPendingChanges()`: Loads all pending changes, sorted by timestamp (oldest first).
+- `clearPendingChanges()`: Clears all pending changes from the store.
+
+These helpers enable offline-first functionality by tracking changes made while disconnected, so they can be synced to Google Drive when connectivity is restored.
+
+Added 8 new unit tests in `src/lib/indexedDb.test.ts` (total now 27 tests).

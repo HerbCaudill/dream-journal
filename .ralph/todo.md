@@ -1,6 +1,4 @@
 ### To do
-
-- [ ] Create IndexedDB helper to save pending changes
 - [ ] Create `useOfflineCache` hook in `src/hooks/useOfflineCache.ts`
 - [ ] Set up Cloudflare Worker project in `worker/` directory
 - [ ] Configure `wrangler.toml` with KV namespace for tokens
@@ -67,3 +65,4 @@
 - [x] Create IndexedDB helper to open database in `src/lib/indexedDb.ts`
 - [x] Create IndexedDB helper to save entries
 - [x] Create IndexedDB helper to load entries
+- [x] Create IndexedDB helper to save pending changes

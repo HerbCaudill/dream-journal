@@ -4,12 +4,15 @@ import {
   resetDatabase,
   saveEntries,
   loadEntries,
+  savePendingChange,
+  loadPendingChanges,
+  clearPendingChanges,
   DB_NAME,
   DB_VERSION,
   ENTRIES_STORE,
   PENDING_STORE,
 } from "./indexedDb"
-import type { DreamEntry } from "../types"
+import type { DreamEntry, PendingChange } from "../types"
 
 const deleteDatabase = () =>
   new Promise<void>((resolve, reject) => {
@@ -142,5 +145,171 @@ describe("loadEntries", () => {
     expect(loadedEntries).toHaveLength(2)
     expect(loadedEntries).toContainEqual(savedEntries[0])
     expect(loadedEntries).toContainEqual(savedEntries[1])
+  })
+})
+
+describe("savePendingChange", () => {
+  beforeEach(async () => {
+    resetDatabase()
+    await deleteDatabase()
+  })
+
+  afterEach(async () => {
+    resetDatabase()
+    await deleteDatabase()
+  })
+
+  it("saves an add pending change", async () => {
+    const change: PendingChange = {
+      id: "change-1",
+      type: "add",
+      entryId: "entry-1",
+      entry: { id: "entry-1", date: "2024-01-15", content: "A dream" },
+      timestamp: 1705312800000,
+    }
+
+    await savePendingChange(change)
+
+    const changes = await loadPendingChanges()
+    expect(changes).toHaveLength(1)
+    expect(changes[0]).toEqual(change)
+  })
+
+  it("saves an update pending change", async () => {
+    const change: PendingChange = {
+      id: "change-1",
+      type: "update",
+      entryId: "entry-1",
+      entry: { id: "entry-1", date: "2024-01-15", content: "Updated dream" },
+      timestamp: 1705312800000,
+    }
+
+    await savePendingChange(change)
+
+    const changes = await loadPendingChanges()
+    expect(changes).toHaveLength(1)
+    expect(changes[0].type).toBe("update")
+  })
+
+  it("saves a delete pending change", async () => {
+    const change: PendingChange = {
+      id: "change-1",
+      type: "delete",
+      entryId: "entry-1",
+      timestamp: 1705312800000,
+    }
+
+    await savePendingChange(change)
+
+    const changes = await loadPendingChanges()
+    expect(changes).toHaveLength(1)
+    expect(changes[0].type).toBe("delete")
+    expect(changes[0].entry).toBeUndefined()
+  })
+
+  it("saves multiple pending changes", async () => {
+    const change1: PendingChange = {
+      id: "change-1",
+      type: "add",
+      entryId: "entry-1",
+      entry: { id: "entry-1", date: "2024-01-15", content: "Dream 1" },
+      timestamp: 1705312800000,
+    }
+    const change2: PendingChange = {
+      id: "change-2",
+      type: "update",
+      entryId: "entry-2",
+      entry: { id: "entry-2", date: "2024-01-16", content: "Dream 2" },
+      timestamp: 1705312900000,
+    }
+
+    await savePendingChange(change1)
+    await savePendingChange(change2)
+
+    const changes = await loadPendingChanges()
+    expect(changes).toHaveLength(2)
+  })
+})
+
+describe("loadPendingChanges", () => {
+  beforeEach(async () => {
+    resetDatabase()
+    await deleteDatabase()
+  })
+
+  afterEach(async () => {
+    resetDatabase()
+    await deleteDatabase()
+  })
+
+  it("returns empty array when no pending changes exist", async () => {
+    const changes = await loadPendingChanges()
+    expect(changes).toEqual([])
+  })
+
+  it("returns changes sorted by timestamp", async () => {
+    const change1: PendingChange = {
+      id: "change-1",
+      type: "add",
+      entryId: "entry-1",
+      entry: { id: "entry-1", date: "2024-01-15", content: "Dream 1" },
+      timestamp: 1705312900000,
+    }
+    const change2: PendingChange = {
+      id: "change-2",
+      type: "add",
+      entryId: "entry-2",
+      entry: { id: "entry-2", date: "2024-01-16", content: "Dream 2" },
+      timestamp: 1705312800000,
+    }
+
+    await savePendingChange(change1)
+    await savePendingChange(change2)
+
+    const changes = await loadPendingChanges()
+    expect(changes[0].id).toBe("change-2")
+    expect(changes[1].id).toBe("change-1")
+  })
+})
+
+describe("clearPendingChanges", () => {
+  beforeEach(async () => {
+    resetDatabase()
+    await deleteDatabase()
+  })
+
+  afterEach(async () => {
+    resetDatabase()
+    await deleteDatabase()
+  })
+
+  it("removes all pending changes", async () => {
+    const change1: PendingChange = {
+      id: "change-1",
+      type: "add",
+      entryId: "entry-1",
+      entry: { id: "entry-1", date: "2024-01-15", content: "Dream 1" },
+      timestamp: 1705312800000,
+    }
+    const change2: PendingChange = {
+      id: "change-2",
+      type: "delete",
+      entryId: "entry-2",
+      timestamp: 1705312900000,
+    }
+
+    await savePendingChange(change1)
+    await savePendingChange(change2)
+
+    await clearPendingChanges()
+
+    const changes = await loadPendingChanges()
+    expect(changes).toEqual([])
+  })
+
+  it("does nothing when no pending changes exist", async () => {
+    await clearPendingChanges()
+    const changes = await loadPendingChanges()
+    expect(changes).toEqual([])
   })
 })

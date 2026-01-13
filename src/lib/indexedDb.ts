@@ -1,4 +1,4 @@
-import type { DreamEntry } from "../types"
+import type { DreamEntry, PendingChange } from "../types"
 
 export const DB_NAME = "dream-journal"
 export const DB_VERSION = 1
@@ -90,6 +90,70 @@ export const loadEntries = async (): Promise<DreamEntry[]> => {
 
     request.onerror = () => {
       reject(request.error)
+    }
+  })
+}
+
+export const savePendingChange = async (change: PendingChange): Promise<void> => {
+  const db = await openDatabase()
+
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(PENDING_STORE, "readwrite")
+    const store = tx.objectStore(PENDING_STORE)
+    const request = store.put(change)
+
+    request.onerror = () => {
+      reject(request.error)
+    }
+
+    tx.oncomplete = () => {
+      resolve()
+    }
+
+    tx.onerror = () => {
+      reject(tx.error)
+    }
+  })
+}
+
+export const loadPendingChanges = async (): Promise<PendingChange[]> => {
+  const db = await openDatabase()
+
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(PENDING_STORE, "readonly")
+    const store = tx.objectStore(PENDING_STORE)
+    const request = store.getAll()
+
+    request.onsuccess = () => {
+      const changes = request.result as PendingChange[]
+      changes.sort((a, b) => a.timestamp - b.timestamp)
+      resolve(changes)
+    }
+
+    request.onerror = () => {
+      reject(request.error)
+    }
+  })
+}
+
+export const clearPendingChanges = async (): Promise<void> => {
+  const db = await openDatabase()
+
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(PENDING_STORE, "readwrite")
+    const store = tx.objectStore(PENDING_STORE)
+    const request = store.clear()
+
+    request.onerror = () => {
+      reject(request.error)
+    }
+
+    tx.oncomplete = () => {
+      resolve()
+    }
+
+    tx.onerror = () => {
+      reject(tx.error)
     }
   })
 }
