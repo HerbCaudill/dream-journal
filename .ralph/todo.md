@@ -14,8 +14,6 @@
 - [ ] Create `src/lib/api.ts` for worker API client
 - [ ] Create `src/lib/drive.ts` wrapper for Drive operations
 - [ ] Integrate Google Drive Picker library
-- [ ] Create `EntryForm` component in `src/components/EntryForm.tsx`
-- [ ] Style `EntryForm` with minimal/calm aesthetic
 - [ ] Create `HomePage` in `src/pages/HomePage.tsx`
 - [ ] Add navigation button to history on `HomePage`
 - [ ] Create `HistoryEntry` component in `src/components/HistoryEntry.tsx`
@@ -67,3 +65,5 @@
 - [x] Create IndexedDB helper to load entries
 - [x] Create IndexedDB helper to save pending changes
 - [x] Create `useOfflineCache` hook in `src/hooks/useOfflineCache.ts`
+- [x] Create `EntryForm` component in `src/components/EntryForm.tsx`
+- [x] Style `EntryForm` with minimal/calm aesthetic

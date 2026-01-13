@@ -97,5 +97,31 @@ Created `src/hooks/useOfflineCache.ts` - a React hook that provides an interface
 The hook loads entries and pending changes from IndexedDB on mount, providing loading state while the async operation completes.
 
 Also:
+
 - Added `@testing-library/react` and `jsdom` dev dependencies for hook testing
 - Created `src/hooks/useOfflineCache.test.ts` with 10 comprehensive tests
+
+## 2026-01-13: Created EntryForm component
+
+Created `src/components/EntryForm.tsx` - the main form for entering dream journal entries:
+
+- **Date input**: Defaults to today's date, user can change to record past dreams
+- **Content textarea**: Large text area with placeholder "Describe your dream..."
+- **Submit button**: Disabled until content is entered, button text "Save entry"
+- **Minimal/calm aesthetic**: Uses muted colors, relaxed spacing, and subtle focus states
+
+Props:
+
+- `onSubmit({ date, content })`: Callback when form is submitted
+- `disabled`: Optional prop to disable all inputs
+
+Features:
+
+- Trims whitespace from content before submitting
+- Clears content after successful submission
+- Prevents submission of empty/whitespace-only content
+
+Also:
+
+- Added `@testing-library/jest-dom` and `@testing-library/user-event` dev dependencies
+- Created `src/components/EntryForm.test.tsx` with 10 comprehensive tests

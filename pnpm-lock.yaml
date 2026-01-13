@@ -38,9 +38,15 @@ importers:
       "@tailwindcss/vite":
         specifier: ^4.1.18
         version: 4.1.18(vite@7.3.1(@types/node@24.10.8)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1))
+      "@testing-library/jest-dom":
+        specifier: ^6.9.1
+        version: 6.9.1
       "@testing-library/react":
         specifier: ^16.3.1
         version: 16.3.1(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      "@testing-library/user-event":
+        specifier: ^14.6.1
+        version: 14.6.1(@testing-library/dom@10.4.1)
       "@types/node":
         specifier: ^24.10.1
         version: 24.10.8
@@ -104,6 +110,12 @@ packages:
     resolution:
       {
         integrity: sha512-ZnR3GSaH+/vJ0YlHau21FjfLYjMpYVIzTD8M8vIEQvIGxeOXyXdzCI140rrCY862p/C/BbzWsjc1dgnM9mkoTA==,
+      }
+
+  "@adobe/css-tools@4.4.4":
+    resolution:
+      {
+        integrity: sha512-Elp+iwUx5rN5+Y8xLt5/GRoG20WGoDCQ/1Fb+1LiGtvwbDavuSk0jhD/eZdckHAuzcDzccnkv+rEjyWfRx18gg==,
       }
 
   "@alcalzone/ansi-tokenize@0.2.3":
@@ -1829,6 +1841,13 @@ packages:
       }
     engines: { node: ">=18" }
 
+  "@testing-library/jest-dom@6.9.1":
+    resolution:
+      {
+        integrity: sha512-zIcONa+hVtVSSep9UT3jZ5rizo2BsxgyDYU7WFD5eICBE7no3881HGeb/QkGfsJs6JTkY1aQhT7rIPC7e+0nnA==,
+      }
+    engines: { node: ">=14", npm: ">=6", yarn: ">=1" }
+
   "@testing-library/react@16.3.1":
     resolution:
       {
@@ -1846,6 +1865,15 @@ packages:
         optional: true
       "@types/react-dom":
         optional: true
+
+  "@testing-library/user-event@14.6.1":
+    resolution:
+      {
+        integrity: sha512-vq7fv0rnt+QTXgPxr5Hjc210p6YKq2kmdziLgnsZGgLJ9e6VAShx1pACLuRjd/AS/sr7phAR58OIIpf0LlmQNw==,
+      }
+    engines: { node: ">=12", npm: ">=6" }
+    peerDependencies:
+      "@testing-library/dom": ">=7.21.4"
 
   "@types/aria-query@5.0.4":
     resolution:
@@ -2502,6 +2530,12 @@ packages:
       }
     engines: { node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0 }
 
+  css.escape@1.5.1:
+    resolution:
+      {
+        integrity: sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg==,
+      }
+
   cssstyle@5.3.7:
     resolution:
       {
@@ -2613,6 +2647,12 @@ packages:
     resolution:
       {
         integrity: sha512-X7BJ2yElsnOJ30pZF4uIIDfBEVgF4XEBxL9Bxhy6dnrm5hkzqmsWHGTiHqRiITNhMyFLyAiWndIJP7Z1NTteDg==,
+      }
+
+  dom-accessibility-api@0.6.3:
+    resolution:
+      {
+        integrity: sha512-7ZgogeTnjuHbo+ct10G9Ffp0mif17idi0IyWNVA/wcwcm7NPOD/WEHVP3n7n3MhXqxoIYm8d6MuZohYWIZ4T3w==,
       }
 
   dunder-proto@1.0.1:
@@ -3224,6 +3264,13 @@ packages:
         integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==,
       }
     engines: { node: ">=0.8.19" }
+
+  indent-string@4.0.0:
+    resolution:
+      {
+        integrity: sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg==,
+      }
+    engines: { node: ">=8" }
 
   indent-string@5.0.0:
     resolution:
@@ -3907,6 +3954,13 @@ packages:
       }
     engines: { node: ">=6" }
 
+  min-indent@1.0.1:
+    resolution:
+      {
+        integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==,
+      }
+    engines: { node: ">=4" }
+
   minimatch@10.1.1:
     resolution:
       {
@@ -4284,6 +4338,13 @@ packages:
         integrity: sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==,
       }
     engines: { node: ">=0.10.0" }
+
+  redent@3.0.0:
+    resolution:
+      {
+        integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==,
+      }
+    engines: { node: ">=8" }
 
   reflect.getprototypeof@1.0.10:
     resolution:
@@ -4677,6 +4738,13 @@ packages:
         integrity: sha512-ZprKx+bBLXv067WTCALv8SSz5l2+XhpYCsVtSqlMnkAXMWDq+/ekVbl1ghqP9rUHTzv6sm/DwCOiYutU/yp1fw==,
       }
     engines: { node: ">=10" }
+
+  strip-indent@3.0.0:
+    resolution:
+      {
+        integrity: sha512-laJTa3Jb+VQpaC6DseHhF7dXVqHTfJPCRDaEbid/drOhgitgYku/letMUqOXFoWV0zIIUbjpdH2t+tYj4bQMRQ==,
+      }
+    engines: { node: ">=8" }
 
   strip-json-comments@3.1.1:
     resolution:
@@ -5374,6 +5442,8 @@ packages:
 
 snapshots:
   "@acemir/cssom@0.9.31": {}
+
+  "@adobe/css-tools@4.4.4": {}
 
   "@alcalzone/ansi-tokenize@0.2.3":
     dependencies:
@@ -6511,6 +6581,15 @@ snapshots:
       picocolors: 1.1.1
       pretty-format: 27.5.1
 
+  "@testing-library/jest-dom@6.9.1":
+    dependencies:
+      "@adobe/css-tools": 4.4.4
+      aria-query: 5.3.0
+      css.escape: 1.5.1
+      dom-accessibility-api: 0.6.3
+      picocolors: 1.1.1
+      redent: 3.0.0
+
   "@testing-library/react@16.3.1(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)":
     dependencies:
       "@babel/runtime": 7.28.6
@@ -6520,6 +6599,10 @@ snapshots:
     optionalDependencies:
       "@types/react": 19.2.8
       "@types/react-dom": 19.2.3(@types/react@19.2.8)
+
+  "@testing-library/user-event@14.6.1(@testing-library/dom@10.4.1)":
+    dependencies:
+      "@testing-library/dom": 10.4.1
 
   "@types/aria-query@5.0.4": {}
 
@@ -6938,6 +7021,8 @@ snapshots:
       mdn-data: 2.12.2
       source-map-js: 1.2.1
 
+  css.escape@1.5.1: {}
+
   cssstyle@5.3.7:
     dependencies:
       "@asamuzakjp/css-color": 4.1.1
@@ -7001,6 +7086,8 @@ snapshots:
   detect-libc@2.1.2: {}
 
   dom-accessibility-api@0.5.16: {}
+
+  dom-accessibility-api@0.6.3: {}
 
   dunder-proto@1.0.1:
     dependencies:
@@ -7435,6 +7522,8 @@ snapshots:
 
   imurmurhash@0.1.4: {}
 
+  indent-string@4.0.0: {}
+
   indent-string@5.0.0: {}
 
   ink-big-text@2.0.0(ink@6.6.0(@types/react@19.2.8)(react@19.2.3))(react@19.2.3):
@@ -7826,6 +7915,8 @@ snapshots:
 
   mimic-fn@2.1.0: {}
 
+  min-indent@1.0.1: {}
+
   minimatch@10.1.1:
     dependencies:
       "@isaacs/brace-expansion": 5.0.0
@@ -7982,6 +8073,11 @@ snapshots:
   react-refresh@0.18.0: {}
 
   react@19.2.3: {}
+
+  redent@3.0.0:
+    dependencies:
+      indent-string: 4.0.0
+      strip-indent: 3.0.0
 
   reflect.getprototypeof@1.0.10:
     dependencies:
@@ -8283,6 +8379,10 @@ snapshots:
       ansi-regex: 6.2.2
 
   strip-comments@2.0.1: {}
+
+  strip-indent@3.0.0:
+    dependencies:
+      min-indent: 1.0.1
 
   strip-json-comments@3.1.1: {}
 
