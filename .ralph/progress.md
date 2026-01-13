@@ -154,3 +154,23 @@ Also:
 
 - Added `react-router-dom` dependency
 - handleSubmit currently logs to console; will be connected to useEntries hook in future task
+
+## 2026-01-13: Created useEntries hook
+
+Created `src/hooks/useEntries.ts` - a React hook for managing dream journal entries with full CRUD operations:
+
+- **State**: `entries`, `isLoading`, `error`, `hasPendingChanges`
+- **Methods**:
+  - `addEntry(date, content)`: Creates a new entry, saves to cache, records pending change
+  - `updateEntry(id, content)`: Updates an existing entry by ID
+  - `deleteEntry(id)`: Deletes an entry by ID
+  - `getEntryById(id)`: Returns an entry by ID (undefined if not found)
+
+Key features:
+- Entries are always sorted by date descending (newest first)
+- Each mutation (add/update/delete) records a pending change for future sync
+- Optimistic updates - state is updated immediately, then persisted to IndexedDB
+- Uses `crypto.randomUUID()` for unique IDs
+
+Also:
+- Created `src/hooks/useEntries.test.ts` with 19 comprehensive tests covering all operations

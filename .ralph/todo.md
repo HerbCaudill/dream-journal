@@ -20,10 +20,6 @@
 - [ ] Implement double-click delete confirmation in `HistoryEntry`
 - [ ] Create `HistoryPage` in `src/pages/HistoryPage.tsx`
 - [ ] Add back button to `HistoryPage`
-- [ ] Create `useEntries` hook in `src/hooks/useEntries.ts`
-- [ ] Implement `addEntry` in `useEntries`
-- [ ] Implement `updateEntry` in `useEntries`
-- [ ] Implement `deleteEntry` in `useEntries`
 - [ ] Implement sync logic: load from Drive on mount
 - [ ] Implement sync logic: fall back to IndexedDB when offline
 - [ ] Implement sync logic: save to both Drive and cache
@@ -67,3 +63,7 @@
 - [x] Style `EntryForm` with minimal/calm aesthetic
 - [x] Create `HomePage` in `src/pages/HomePage.tsx`
 - [x] Update `App.tsx` with routing between home and history
+- [x] Create `useEntries` hook in `src/hooks/useEntries.ts`
+- [x] Implement `addEntry` in `useEntries`
+- [x] Implement `updateEntry` in `useEntries`
+- [x] Implement `deleteEntry` in `useEntries`
