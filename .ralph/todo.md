@@ -17,8 +17,6 @@
 - [ ] Create `HistoryEntry` component in `src/components/HistoryEntry.tsx`
 - [ ] Implement inline editing in `HistoryEntry`
 - [ ] Implement double-click delete confirmation in `HistoryEntry`
-- [ ] Create `HistoryPage` in `src/pages/HistoryPage.tsx`
-- [ ] Add back button to `HistoryPage`
 - [ ] Implement sync logic: load from Drive on mount
 - [ ] Implement sync logic: fall back to IndexedDB when offline
 - [ ] Implement sync logic: save to both Drive and cache
@@ -67,3 +65,6 @@
 - [x] Implement `updateEntry` in `useEntries`
 - [x] Implement `deleteEntry` in `useEntries`
 - [x] Add navigation button to history on `HomePage`
+- [x] Create `HistoryPage` in `src/pages/HistoryPage.tsx`
+- [x] Add back button to `HistoryPage`
+- [x] Integrate `useEntries` hook into `App.tsx`

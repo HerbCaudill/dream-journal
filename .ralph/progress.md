@@ -190,3 +190,30 @@ Also:
 
 - Added `@tabler/icons-react` dependency
 - Updated `src/pages/HomePage.test.tsx` with MemoryRouter wrappers and a new test for the history link
+
+## 2026-01-13: Created HistoryPage component and integrated useEntries
+
+Created `src/pages/HistoryPage.tsx` - displays all dream journal entries:
+
+- **Title**: "History" in serif font with light weight, matching HomePage style
+- **Back button**: Arrow icon linking back to home (`/`)
+- **Entry list**: Displays entries with formatted dates and content
+- **Loading state**: Shows "Loading..." while entries are being fetched
+- **Empty state**: Shows "No entries yet" when there are no entries
+- **Date formatting**: Displays dates in human-readable format (e.g., "March 15, 2024")
+
+Props:
+
+- `entries: DreamEntry[]`: Array of entries to display
+- `isLoading: boolean`: Whether entries are still loading
+
+Updated `src/App.tsx` to:
+
+- Import and use `useEntries` hook from `@/hooks/useEntries`
+- Connect `handleSubmit` to `addEntry` method (replaces console.log placeholder)
+- Pass `entries` and `isLoading` to `HistoryPage` component
+
+Also:
+
+- Created `src/pages/HistoryPage.test.tsx` with 6 comprehensive tests
+- Used IconArrowLeft from `@tabler/icons-react` for back navigation
