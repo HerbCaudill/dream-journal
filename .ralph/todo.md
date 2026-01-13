@@ -1,0 +1,69 @@
+### To do
+
+- [ ] Create `parseEntries` function in `src/lib/entries.ts`
+- [ ] Create `serializeEntries` function in `src/lib/entries.ts`
+- [ ] Create `getTodayDate` function in `src/lib/entries.ts`
+- [ ] Write unit tests for `parseEntries`
+- [ ] Write unit tests for `serializeEntries`
+- [ ] Create IndexedDB helper to open database in `src/lib/indexedDb.ts`
+- [ ] Create IndexedDB helper to save entries
+- [ ] Create IndexedDB helper to load entries
+- [ ] Create IndexedDB helper to save pending changes
+- [ ] Create `useOfflineCache` hook in `src/hooks/useOfflineCache.ts`
+- [ ] Set up Cloudflare Worker project in `worker/` directory
+- [ ] Configure `wrangler.toml` with KV namespace for tokens
+- [ ] Create worker endpoint `POST /auth/callback` for token exchange
+- [ ] Create worker endpoint `GET /drive/file` to read file from Drive
+- [ ] Create worker endpoint `PUT /drive/file` to write file to Drive
+- [ ] Create worker endpoint `POST /drive/picker` to handle file picker result
+- [ ] Add token refresh logic to worker
+- [ ] Add Google Identity Services library to project
+- [ ] Create `GoogleSignIn` component in `src/components/GoogleSignIn.tsx`
+- [ ] Create `useAuth` hook in `src/hooks/useAuth.ts`
+- [ ] Implement PKCE code generation in auth flow
+- [ ] Create `src/lib/api.ts` for worker API client
+- [ ] Create `src/lib/drive.ts` wrapper for Drive operations
+- [ ] Integrate Google Drive Picker library
+- [ ] Create `EntryForm` component in `src/components/EntryForm.tsx`
+- [ ] Style `EntryForm` with minimal/calm aesthetic
+- [ ] Create `HomePage` in `src/pages/HomePage.tsx`
+- [ ] Add navigation button to history on `HomePage`
+- [ ] Create `HistoryEntry` component in `src/components/HistoryEntry.tsx`
+- [ ] Implement inline editing in `HistoryEntry`
+- [ ] Implement double-click delete confirmation in `HistoryEntry`
+- [ ] Create `HistoryPage` in `src/pages/HistoryPage.tsx`
+- [ ] Add back button to `HistoryPage`
+- [ ] Create `useEntries` hook in `src/hooks/useEntries.ts`
+- [ ] Implement `addEntry` in `useEntries`
+- [ ] Implement `updateEntry` in `useEntries`
+- [ ] Implement `deleteEntry` in `useEntries`
+- [ ] Implement sync logic: load from Drive on mount
+- [ ] Implement sync logic: fall back to IndexedDB when offline
+- [ ] Implement sync logic: save to both Drive and cache
+- [ ] Update `App.tsx` with routing between home and history
+- [ ] Add auth context provider to `App.tsx`
+- [ ] Add offline indicator UI
+- [ ] Test entry submission flow
+- [ ] Test history view and navigation
+- [ ] Test inline editing
+- [ ] Test delete with double-click confirmation
+- [ ] Test Google sign-in flow
+- [ ] Test file picker and Drive sync
+- [ ] Test offline mode (add entry while disconnected)
+- [ ] Test reconnection sync
+- [ ] Test on iOS Safari as installed PWA
+- [ ] Write Playwright E2E tests for entry flow
+- [ ] Write Playwright E2E tests for history flow
+- [ ] Run `pnpm format`
+- [ ] Create Google Cloud project
+- [ ] Enable Google Drive API
+- [ ] Create OAuth 2.0 Client ID
+- [ ] Configure consent screen
+- [ ] Deploy Cloudflare Worker
+- [ ] Update worker URLs in frontend config
+
+---
+
+### Done
+
+- [x] Create `DreamEntry` type in `src/types/index.ts`
