@@ -14,7 +14,6 @@
 - [ ] Create `src/lib/api.ts` for worker API client
 - [ ] Create `src/lib/drive.ts` wrapper for Drive operations
 - [ ] Integrate Google Drive Picker library
-- [ ] Implement inline editing in `HistoryEntry`
 - [ ] Implement double-click delete confirmation in `HistoryEntry`
 - [ ] Implement sync logic: load from Drive on mount
 - [ ] Implement sync logic: fall back to IndexedDB when offline
@@ -68,3 +67,4 @@
 - [x] Add back button to `HistoryPage`
 - [x] Integrate `useEntries` hook into `App.tsx`
 - [x] Create `HistoryEntry` component in `src/components/HistoryEntry.tsx`
+- [x] Implement inline editing in `HistoryEntry`

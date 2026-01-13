@@ -3,7 +3,7 @@ import { IconArrowLeft } from "@tabler/icons-react"
 import { HistoryEntry } from "@/components/HistoryEntry"
 import type { DreamEntry } from "@/types"
 
-export function HistoryPage({ entries, isLoading }: Props) {
+export function HistoryPage({ entries, isLoading, onUpdate }: Props) {
   return (
     <div className="flex min-h-screen flex-col items-center px-4 py-12">
       <div className="w-full max-w-md">
@@ -24,7 +24,7 @@ export function HistoryPage({ entries, isLoading }: Props) {
           <p className="text-muted-foreground text-center">No entries yet</p>
         : <div className="flex flex-col gap-6">
             {entries.map(entry => (
-              <HistoryEntry key={entry.id} entry={entry} />
+              <HistoryEntry key={entry.id} entry={entry} onUpdate={onUpdate} />
             ))}
           </div>
         }
@@ -36,4 +36,5 @@ export function HistoryPage({ entries, isLoading }: Props) {
 type Props = {
   entries: DreamEntry[]
   isLoading: boolean
+  onUpdate?: (id: string, content: string) => void
 }

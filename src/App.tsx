@@ -4,7 +4,7 @@ import { HistoryPage } from "@/pages/HistoryPage"
 import { useEntries } from "@/hooks/useEntries"
 
 export function App() {
-  const { entries, isLoading, addEntry } = useEntries()
+  const { entries, isLoading, addEntry, updateEntry } = useEntries()
 
   const handleSubmit = (entry: { date: string; content: string }) => {
     addEntry(entry.date, entry.content)
@@ -14,7 +14,10 @@ export function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage onSubmit={handleSubmit} />} />
-        <Route path="/history" element={<HistoryPage entries={entries} isLoading={isLoading} />} />
+        <Route
+          path="/history"
+          element={<HistoryPage entries={entries} isLoading={isLoading} onUpdate={updateEntry} />}
+        />
       </Routes>
     </BrowserRouter>
   )

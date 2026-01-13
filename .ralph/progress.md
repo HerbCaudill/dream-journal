@@ -236,11 +236,31 @@ Refactored `src/pages/HistoryPage.tsx` to:
 - Removed the local `formatDate` function (now in HistoryEntry)
 - Cleaner separation of concerns - HistoryPage handles layout and list logic, HistoryEntry handles individual entry rendering
 
-This component will be extended in future tasks to support:
-
-- Inline editing (task: "Implement inline editing in HistoryEntry")
-- Double-click delete confirmation (task: "Implement double-click delete confirmation in HistoryEntry")
-
 Also:
 
 - Created `src/components/HistoryEntry.test.tsx` with 5 tests
+
+## 2026-01-13: Implemented inline editing in HistoryEntry
+
+Added inline editing capability to `src/components/HistoryEntry.tsx`:
+
+- **Click to edit**: Click on entry content to enter edit mode (only when `onUpdate` prop is provided)
+- **Textarea editing**: Content becomes an auto-sizing textarea during edit mode
+- **Save on blur/Escape**: Changes are saved when clicking outside or pressing Escape
+- **No-op for unchanged**: Only calls `onUpdate` if content actually changed
+- **Visual affordance**: Cursor pointer and hover background when editable
+
+Props added:
+
+- `onUpdate?: (id: string, content: string) => void`: Optional callback for saving changes
+
+Wired through the component tree:
+
+- `App.tsx`: Now passes `updateEntry` from `useEntries` hook to `HistoryPage`
+- `HistoryPage.tsx`: Accepts `onUpdate` prop and passes it to each `HistoryEntry`
+- `HistoryEntry.tsx`: Uses `onUpdate` to save changes when editing is complete
+
+Also:
+
+- Added 6 new tests to `src/components/HistoryEntry.test.tsx` (11 total)
+- Uses `cn` utility from `@/lib/utils` for conditional class names
