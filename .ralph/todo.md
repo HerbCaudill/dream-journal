@@ -1,10 +1,5 @@
 ### To do
 
-- [ ] Create `parseEntries` function in `src/lib/entries.ts`
-- [ ] Create `serializeEntries` function in `src/lib/entries.ts`
-- [ ] Create `getTodayDate` function in `src/lib/entries.ts`
-- [ ] Write unit tests for `parseEntries`
-- [ ] Write unit tests for `serializeEntries`
 - [ ] Create IndexedDB helper to open database in `src/lib/indexedDb.ts`
 - [ ] Create IndexedDB helper to save entries
 - [ ] Create IndexedDB helper to load entries
@@ -66,4 +61,9 @@
 
 ### Done
 
+- [x] Create `parseEntries` function in `src/lib/entries.ts`
+- [x] Create `serializeEntries` function in `src/lib/entries.ts`
+- [x] Create `getTodayDate` function in `src/lib/entries.ts`
+- [x] Write unit tests for `parseEntries`
+- [x] Write unit tests for `serializeEntries`
 - [x] Create `DreamEntry` type in `src/types/index.ts`
