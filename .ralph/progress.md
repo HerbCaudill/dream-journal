@@ -217,3 +217,30 @@ Also:
 
 - Created `src/pages/HistoryPage.test.tsx` with 6 comprehensive tests
 - Used IconArrowLeft from `@tabler/icons-react` for back navigation
+
+## 2026-01-13: Created HistoryEntry component
+
+Created `src/components/HistoryEntry.tsx` - a reusable component for displaying a single dream entry in the history list:
+
+- **Date**: Displayed in human-readable format (e.g., "March 15, 2024") using `<time>` element
+- **Content**: Entry text with preserved whitespace (newlines, etc.)
+- **Semantic markup**: Uses `<article>` element for proper document structure
+
+Props:
+
+- `entry: DreamEntry`: The entry to display
+
+Refactored `src/pages/HistoryPage.tsx` to:
+
+- Use the new HistoryEntry component instead of inline rendering
+- Removed the local `formatDate` function (now in HistoryEntry)
+- Cleaner separation of concerns - HistoryPage handles layout and list logic, HistoryEntry handles individual entry rendering
+
+This component will be extended in future tasks to support:
+
+- Inline editing (task: "Implement inline editing in HistoryEntry")
+- Double-click delete confirmation (task: "Implement double-click delete confirmation in HistoryEntry")
+
+Also:
+
+- Created `src/components/HistoryEntry.test.tsx` with 5 tests

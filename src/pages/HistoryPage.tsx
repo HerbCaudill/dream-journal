@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { IconArrowLeft } from "@tabler/icons-react"
+import { HistoryEntry } from "@/components/HistoryEntry"
 import type { DreamEntry } from "@/types"
 
 export function HistoryPage({ entries, isLoading }: Props) {
@@ -23,25 +24,13 @@ export function HistoryPage({ entries, isLoading }: Props) {
           <p className="text-muted-foreground text-center">No entries yet</p>
         : <div className="flex flex-col gap-6">
             {entries.map(entry => (
-              <article key={entry.id} className="flex flex-col gap-2">
-                <time className="text-muted-foreground text-sm">{formatDate(entry.date)}</time>
-                <p className="leading-relaxed whitespace-pre-wrap">{entry.content}</p>
-              </article>
+              <HistoryEntry key={entry.id} entry={entry} />
             ))}
           </div>
         }
       </div>
     </div>
   )
-}
-
-function formatDate(dateString: string): string {
-  const date = new Date(dateString + "T00:00:00")
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  })
 }
 
 type Props = {
