@@ -142,3 +142,15 @@ Also:
 
 - Created `src/pages/` directory for page components
 - Created `src/pages/HomePage.test.tsx` with 3 tests covering rendering and submission
+
+## 2026-01-13: Added routing to App.tsx
+
+Updated `src/App.tsx` with react-router-dom routing:
+
+- **Home route** (`/`): Renders HomePage with EntryForm
+- **History route** (`/history`): Placeholder for future HistoryPage
+
+Also:
+
+- Added `react-router-dom` dependency
+- handleSubmit currently logs to console; will be connected to useEntries hook in future task

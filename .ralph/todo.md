@@ -27,7 +27,6 @@
 - [ ] Implement sync logic: load from Drive on mount
 - [ ] Implement sync logic: fall back to IndexedDB when offline
 - [ ] Implement sync logic: save to both Drive and cache
-- [ ] Update `App.tsx` with routing between home and history
 - [ ] Add auth context provider to `App.tsx`
 - [ ] Add offline indicator UI
 - [ ] Test entry submission flow
@@ -67,3 +66,4 @@
 - [x] Create `EntryForm` component in `src/components/EntryForm.tsx`
 - [x] Style `EntryForm` with minimal/calm aesthetic
 - [x] Create `HomePage` in `src/pages/HomePage.tsx`
+- [x] Update `App.tsx` with routing between home and history
