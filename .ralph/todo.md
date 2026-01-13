@@ -1,6 +1,5 @@
 ### To do
 
-- [ ] Create IndexedDB helper to open database in `src/lib/indexedDb.ts`
 - [ ] Create IndexedDB helper to save entries
 - [ ] Create IndexedDB helper to load entries
 - [ ] Create IndexedDB helper to save pending changes
@@ -67,3 +66,4 @@
 - [x] Write unit tests for `parseEntries`
 - [x] Write unit tests for `serializeEntries`
 - [x] Create `DreamEntry` type in `src/types/index.ts`
+- [x] Create IndexedDB helper to open database in `src/lib/indexedDb.ts`

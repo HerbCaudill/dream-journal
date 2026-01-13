@@ -34,3 +34,21 @@ Also:
 
 - Added vitest as dev dependency
 - Added `test`, `test:watch`, and `format` scripts to package.json
+
+## 2026-01-13: Created IndexedDB helper to open database
+
+Created `src/lib/indexedDb.ts` with:
+
+- `openDatabase()`: Opens connection to IndexedDB database "dream-journal". Uses singleton pattern to return same connection on subsequent calls.
+- `resetDatabase()`: Closes connection and resets singleton (for testing).
+- Constants: `DB_NAME`, `DB_VERSION`, `ENTRIES_STORE`, `PENDING_STORE`.
+
+The database has two object stores:
+- `entries`: For caching dream entries locally (keyPath: "id")
+- `pending`: For tracking changes made while offline (keyPath: "id")
+
+Also:
+- Added `fake-indexeddb` dev dependency for testing IndexedDB in Node
+- Created `vitest.config.ts` with test setup file
+- Created `src/test/setup.ts` to initialize fake-indexeddb
+- Added comprehensive unit tests in `src/lib/indexedDb.test.ts`
