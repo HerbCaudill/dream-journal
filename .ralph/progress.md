@@ -125,3 +125,20 @@ Also:
 
 - Added `@testing-library/jest-dom` and `@testing-library/user-event` dev dependencies
 - Created `src/components/EntryForm.test.tsx` with 10 comprehensive tests
+
+## 2026-01-13: Created HomePage component
+
+Created `src/pages/HomePage.tsx` - the main landing page for the dream journal app:
+
+- **Title**: "Dream journal" in serif font with light weight
+- **EntryForm**: Renders the EntryForm component for entering dreams
+- **Layout**: Centered content with max-width constraint, responsive padding
+
+Props:
+
+- `onSubmit({ date, content })`: Callback passed through to EntryForm
+
+Also:
+
+- Created `src/pages/` directory for page components
+- Created `src/pages/HomePage.test.tsx` with 3 tests covering rendering and submission
