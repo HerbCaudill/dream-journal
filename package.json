@@ -4,13 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "localhost-dev pnpm dev:app",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "dev:app": "vite",
+    "dev:url": "localhost-dev url"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
